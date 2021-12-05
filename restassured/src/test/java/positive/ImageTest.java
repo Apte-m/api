@@ -1,3 +1,5 @@
+package positive;
+
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
@@ -30,6 +32,7 @@ public class ImageTest extends BaseTest {
 
     @DisplayName("Проверка загрузки картики из директории ресурс")
     @Test
+
     void getContentInfo() {
         uploadedContent = given()
                 .headers("Authorization", token)
@@ -46,6 +49,20 @@ public class ImageTest extends BaseTest {
                 .jsonPath()
                 .getString("data.deletehash");
 
+    }
+
+    @DisplayName("Проверка добавления описания картинки")
+    @Test
+    void getTitleInfo(){
+        given()
+                .headers("Authorization", token)
+                .multiPart("title","Heart","description","some text")
+                .expect()
+                .body("success",is(true))
+                .when()
+                .post("https://api.imgur.com/3/image/{imageDeleteHash}",uploadedContent)
+                .then()
+                .statusCode(200);
     }
 
 
@@ -65,6 +82,7 @@ public class ImageTest extends BaseTest {
                 .extract()
                 .jsonPath()
                 .getString("data.id");
+
 
 
     }

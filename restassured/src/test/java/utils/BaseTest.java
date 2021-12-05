@@ -1,13 +1,16 @@
 package utils;
 
+import io.qameta.allure.restassured.AllureRestAssured;
 import io.restassured.RestAssured;
 import org.apache.commons.io.FileUtils;
-import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.TestInfo;
 
-import java.io.*;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.Base64;
 import java.util.Properties;
 
@@ -16,19 +19,19 @@ import static io.restassured.RestAssured.given;
 public abstract class BaseTest {
 
     protected Properties properties = new Properties();
-    protected String token;
+    protected static String token;
     public static String username;
     protected String clienID;
     protected byte[] image;
     protected String encodedFile;
     protected String uploadedContent;
-    protected String imageHash;
-
+    protected  String imageHash;
 
 
     @BeforeEach
     void setUp() {
         RestAssured.enableLoggingOfRequestAndResponseIfValidationFails();
+        RestAssured.filters(new AllureRestAssured());
         getProperties();
         token = properties.getProperty("token");
         username = properties.getProperty("username");

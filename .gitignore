@@ -23,4 +23,8 @@
 hs_err_pid*
 *target*
 *allure*
+<<<<<<< HEAD
 .idea
+=======
+.idea
+>>>>>>> 052fa74cf130cbd948f1a304b816adde062bd4f6
