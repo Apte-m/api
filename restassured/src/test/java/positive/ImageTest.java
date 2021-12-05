@@ -15,7 +15,7 @@ public class ImageTest extends BaseTest {
 
     @DisplayName("Проверка загрузки картики Base64")
     @Test
-    void getContentInfoBase64() {
+    void getContentInfoBase64Test() {
         uploadedContent = given()
                 .headers("Authorization", token)
                 .multiPart("image", encodedFile)
@@ -32,7 +32,6 @@ public class ImageTest extends BaseTest {
 
     @DisplayName("Проверка загрузки картики из директории ресурс")
     @Test
-
     void getContentInfo() {
         uploadedContent = given()
                 .headers("Authorization", token)
@@ -53,7 +52,7 @@ public class ImageTest extends BaseTest {
 
     @DisplayName("Проверка добавления описания картинки")
     @Test
-    void getTitleInfo(){
+    void getTitleInfoTest(){
         given()
                 .headers("Authorization", token)
                 .multiPart("title","Heart","description","some text")
@@ -69,7 +68,7 @@ public class ImageTest extends BaseTest {
     @DisplayName("Проверка загрузки картики из директории ресурс")
     @Test
     @Tag("Skip")
-    void getContentImageHash() {
+    void getContentImageHashTest() {
         imageHash = given()
                 .headers("Authorization", token)
                 .multiPart("image", new File("src/test/resources/images.jpeg"))
@@ -90,7 +89,7 @@ public class ImageTest extends BaseTest {
 
     @Test
     @Tag("Skip")
-    void favorite() {
+    void favoriteTest() {
         given()
                 .headers("Authorization", token)
                 .expect()
