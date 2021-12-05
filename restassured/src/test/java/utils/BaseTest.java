@@ -1,5 +1,6 @@
 package utils;
 
+import io.qameta.allure.restassured.AllureRestAssured;
 import io.restassured.RestAssured;
 import org.apache.commons.io.FileUtils;
 import org.junit.jupiter.api.AfterEach;
@@ -31,6 +32,7 @@ public abstract class BaseTest {
     @BeforeAll
     static void setUp() {
         RestAssured.enableLoggingOfRequestAndResponseIfValidationFails();
+        RestAssured.filters(new AllureRestAssured());
         getProperties();
         token = properties.getProperty("token");
         username = properties.getProperty("username");
