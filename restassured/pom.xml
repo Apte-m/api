@@ -18,9 +18,11 @@
                 <artifactId>maven-surefire-plugin</artifactId>
                 <version>3.0.0-M1</version>
                 <configuration>
+                    <testFailureIgnore>true</testFailureIgnore>
+                    <shutdown>kill</shutdown>
                     <systemProperties>
                     <systemPropertyVariables>
-                        <allure.results.directory>target/allure-results</allure.results.directory>
+                        <allure.results.directory>${project.build.directory}allure-results</allure.results.directory>
                     </systemPropertyVariables>
                     </systemProperties>
                 </configuration>
@@ -33,6 +35,12 @@
                     <source>8</source>
                     <target>8</target>
                 </configuration>
+            </plugin>
+            <plugin>
+                <groupId>io.qameta.allure</groupId>
+                <artifactId>allure-maven</artifactId>
+                <version>2.10.0</version>
+
             </plugin>
         </plugins>
     </build>
@@ -76,6 +84,7 @@
                 <groupId>io.qameta.allure</groupId>
                 <artifactId>allure-rest-assured</artifactId>
                 <version>2.17.0</version>
+
                 <configuration>
                     <reportVersion>${allure.version}</reportVersion>
                     <argLine>
@@ -83,7 +92,7 @@
                     </argLine>
                     <systemProperties>
                         <systemPropertyVariables>
-                            <allure.results.directory>target/allure-results</allure.results.directory>
+                            <allure.results.directory>${project.build.directory}allure-results</allure.results.directory>
                         </systemPropertyVariables>
                     </systemProperties>
                 </configuration>
