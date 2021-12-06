@@ -13,7 +13,6 @@ public class NegativeAccountTest extends BaseTest {
 
     @DisplayName("Проверка пользователя не корректного ")
     @Test
-    @Tag("Skip")
     void getIncorrectUser() {
         given()
                 .log()
@@ -29,7 +28,6 @@ public class NegativeAccountTest extends BaseTest {
 
     @DisplayName("Проверка авторизации пользователя")
     @Test
-    @Tag("Skip")
     void getAccountInfo() {
         given()
                 .headers("Authorization", clienID)

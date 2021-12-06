@@ -22,10 +22,7 @@ public abstract class BaseTest {
     protected static String token;
     public static String username;
     protected static String clienID;
-    protected static byte[] image;
-    protected static String encodedFile;
     protected String uploadedContent;
-    protected  String imageHash;
 
 
     @BeforeAll
@@ -36,8 +33,7 @@ public abstract class BaseTest {
         token = properties.getProperty("token");
         username = properties.getProperty("username");
         clienID = properties.getProperty("Authorization");
-        image = getContent();
-        encodedFile = Base64.getEncoder().encodeToString(image);
+
 
 
     }
@@ -50,31 +46,6 @@ public abstract class BaseTest {
         }
     }
 
-    private static byte[] getContent() {
-        byte[] image = new byte[0];
-        try {
-            image = FileUtils.readFileToByteArray(new File("src/test/resources/images.jpeg"));
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        return image;
-
-    }
-
-    @AfterEach
-    void tearDown(TestInfo testInfo) {
-
-        if (testInfo.getTags().contains("Skip")) {
-            return;
-        }
-        given()
-                .headers("Authorization", token)
-                .when()
-                .delete("https://api.imgur.com/3/image/{deleteHash}", uploadedContent)
-                .prettyPeek()
-                .then()
-                .statusCode(200);
-    }
 
 }
 

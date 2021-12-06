@@ -13,7 +13,6 @@ public class AccountTest extends BaseTest {
 
     @DisplayName("Проверка авторизации пользователя")
     @Test
-    @Tag("Skip")
     void getAccountInfo() {
         given()
                 .headers("Authorization", clienID)
@@ -26,7 +25,6 @@ public class AccountTest extends BaseTest {
 
     @DisplayName("Проверка авторизации пользователя с логированием")
     @Test
-    @Tag("Skip")
     void getAccountInfoLog() {
         given()
                 .headers("Authorization", clienID)
@@ -41,8 +39,6 @@ public class AccountTest extends BaseTest {
 
 
     }
-
-
 
 
 }
