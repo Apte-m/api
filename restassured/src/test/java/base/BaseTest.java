@@ -1,20 +1,13 @@
-package utils;
+package base;
 
 import io.qameta.allure.restassured.AllureRestAssured;
 import io.restassured.RestAssured;
-import org.apache.commons.io.FileUtils;
-import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.TestInfo;
 
-import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
-import java.util.Base64;
 import java.util.Properties;
-
-import static io.restassured.RestAssured.given;
 
 public abstract class BaseTest {
 
@@ -23,6 +16,7 @@ public abstract class BaseTest {
     public static String username;
     protected static String clienID;
     protected String uploadedContent;
+
 
 
     @BeforeAll

@@ -1,9 +1,9 @@
 package positive;
 
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import utils.BaseTest;
+import base.BaseTest;
 
 import java.io.File;
 
@@ -32,7 +32,7 @@ public class FavoriteTest extends BaseTest {
 
     }
 
-
+    @DisplayName("проверка добавления картинки в избранное")
     @Test
     void addFavorite() {
         given()

@@ -3,9 +3,8 @@ package positive;
 import org.apache.commons.io.FileUtils;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
-import utils.BaseTest;
+import base.BaseTest;
 
 import java.io.File;
 import java.io.IOException;
@@ -18,8 +17,14 @@ public class ImageTest extends BaseTest {
 
     protected static byte[] image;
     protected static String encodedFile;
+
+    public ImageTest() {
+        image = getContent();
+        encodedFile = Base64.getEncoder().encodeToString(image);
+    }
+
     @BeforeEach
-    void imageUp(){
+    void imageUp() {
         image = getContent();
         encodedFile = Base64.getEncoder().encodeToString(image);
     }
@@ -62,9 +67,6 @@ public class ImageTest extends BaseTest {
     }
 
 
-
-
-
     private static byte[] getContent() {
         byte[] image = new byte[0];
         try {
@@ -75,8 +77,6 @@ public class ImageTest extends BaseTest {
         return image;
 
     }
-
-
 
 
 }

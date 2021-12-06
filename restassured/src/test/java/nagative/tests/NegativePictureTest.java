@@ -1,9 +1,8 @@
 package nagative.tests;
 
 import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
-import utils.BaseTest;
+import base.BaseTest;
 
 import java.io.File;
 
