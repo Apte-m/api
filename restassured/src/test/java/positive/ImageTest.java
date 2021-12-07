@@ -14,10 +14,14 @@ import static io.restassured.RestAssured.given;
 import static org.hamcrest.Matchers.is;
 
 public class ImageTest extends BaseTest {
+    protected static byte[] image;
+    protected static String encodedFile;
 
-
-
-
+    @BeforeEach
+    void imageUp() {
+        image = getContent();
+        encodedFile = Base64.getEncoder().encodeToString(image);
+    }
 
     @DisplayName("Проверка загрузки картики Base64")
     @Test
@@ -57,7 +61,16 @@ public class ImageTest extends BaseTest {
     }
 
 
+    private static byte[] getContent() {
+        byte[] image = new byte[0];
+        try {
+            image = FileUtils.readFileToByteArray(new File("src/test/resources/images.jpeg"));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return image;
 
+    }
 
 
 }

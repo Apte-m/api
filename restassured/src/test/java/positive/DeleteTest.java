@@ -5,6 +5,8 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import java.io.File;
+
 import static io.restassured.RestAssured.given;
 import static org.hamcrest.Matchers.is;
 
@@ -15,7 +17,7 @@ public class DeleteTest extends BaseTest {
     void deleteUp() {
         uploadedContent = given()
                 .headers("Authorization", token)
-                .multiPart("image", encodedFile)
+                .multiPart("image", new File("src/test/resources/images.jpeg"))
                 .expect()
                 .body("success", is(true))
                 .statusCode(200)
