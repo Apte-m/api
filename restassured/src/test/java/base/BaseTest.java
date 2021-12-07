@@ -2,11 +2,14 @@ package base;
 
 import io.qameta.allure.restassured.AllureRestAssured;
 import io.restassured.RestAssured;
+import org.apache.commons.io.FileUtils;
 import org.junit.jupiter.api.BeforeAll;
 
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.Base64;
 import java.util.Properties;
 
 public abstract class BaseTest {
@@ -16,8 +19,12 @@ public abstract class BaseTest {
     public static String username;
     protected static String clienID;
     protected String uploadedContent;
+    protected static byte[] image;
+    protected static String encodedFile;
 
+    public BaseTest() {
 
+    }
 
     @BeforeAll
     static void setUp() {
@@ -27,6 +34,9 @@ public abstract class BaseTest {
         token = properties.getProperty("token");
         username = properties.getProperty("username");
         clienID = properties.getProperty("Authorization");
+
+        image = getContent();
+        encodedFile = Base64.getEncoder().encodeToString(image);
 
 
 
@@ -38,6 +48,18 @@ public abstract class BaseTest {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+
+    private static byte[] getContent() {
+        byte[] image = new byte[0];
+        try {
+            image = FileUtils.readFileToByteArray(new File("src/test/resources/images.jpeg"));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return image;
+
     }
 
 

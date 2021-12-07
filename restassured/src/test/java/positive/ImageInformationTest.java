@@ -5,17 +5,19 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import java.io.File;
+
 import static io.restassured.RestAssured.given;
 import static org.hamcrest.Matchers.is;
 
-public class DeleteTest extends BaseTest {
-    String uploadedContent;
+public class ImageInformationTest extends BaseTest {
+    String imageHash;
 
     @BeforeEach
-    void deleteUp() {
-        uploadedContent = given()
+    void titleUo() {
+        imageHash = given()
                 .headers("Authorization", token)
-                .multiPart("image", encodedFile)
+                .multiPart("image", new File("src/test/resources/images.jpeg"))
                 .expect()
                 .body("success", is(true))
                 .statusCode(200)
@@ -24,19 +26,22 @@ public class DeleteTest extends BaseTest {
                 .then()
                 .extract()
                 .jsonPath()
-                .getString("data.deletehash");
+                .getString("data.id");
+
+
     }
 
-    @DisplayName("Проверка удаления картинки")
+    @DisplayName("изменение заголовка")
     @Test
-    void delete() {
+    void uploadInfo() {
         given()
                 .headers("Authorization", token)
+                .param("title", "description")
                 .when()
-                .delete("https://api.imgur.com/3/image/{deleteHash}", uploadedContent)
-                .prettyPeek()
+                .post("https://api.imgur.com/3/image/{imageHash}", imageHash)
                 .then()
                 .statusCode(200);
-    }
-}
 
+    }
+
+}
