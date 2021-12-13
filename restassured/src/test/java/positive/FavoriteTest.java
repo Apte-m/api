@@ -12,7 +12,7 @@ import static org.hamcrest.Matchers.is;
 
 public class FavoriteTest extends BaseTest {
 
-    String imageHash;
+   private String imageHash;
 
     @BeforeEach
     void favorite() {

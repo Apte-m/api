@@ -1,6 +1,7 @@
 package positive;
 
 import base.BaseTest;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -10,6 +11,7 @@ import static io.restassured.RestAssured.given;
 import static org.hamcrest.Matchers.is;
 
 public class VideoTest extends BaseTest {
+    private String uploadedContent;
 
     @DisplayName("Проверка загрузки видео из директории ресурс")
     @Test
@@ -29,5 +31,16 @@ public class VideoTest extends BaseTest {
                 .jsonPath()
                 .getString("data.deletehash");
 
+    }
+
+    @AfterEach
+    void tearDown() {
+        given()
+                .headers("Authorization", token)
+                .when()
+                .delete("https://api.imgur.com/3/image/{deleteHash}", uploadedContent)
+                .prettyPeek()
+                .then()
+                .statusCode(200);
     }
 }

@@ -15,7 +15,7 @@ public abstract class BaseTest {
     protected static String token;
     public static String username;
     protected static String clienID;
-    protected String uploadedContent;
+
 
 
     @BeforeAll
