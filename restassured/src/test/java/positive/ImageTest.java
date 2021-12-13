@@ -1,6 +1,7 @@
 package positive;
 
 import org.apache.commons.io.FileUtils;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -14,8 +15,9 @@ import static io.restassured.RestAssured.given;
 import static org.hamcrest.Matchers.is;
 
 public class ImageTest extends BaseTest {
-    protected static byte[] image;
-    protected static String encodedFile;
+    private static byte[] image;
+    private static String encodedFile;
+    private static   String uploadedContent;
 
     @BeforeEach
     void imageUp() {
@@ -58,6 +60,18 @@ public class ImageTest extends BaseTest {
                 .jsonPath()
                 .getString("data.deletehash");
 
+    }
+
+    @DisplayName("Проверка удаления картинки")
+    @AfterEach
+    void tearDown() {
+        given()
+                .headers("Authorization", token)
+                .when()
+                .delete("https://api.imgur.com/3/image/{deleteHash}", uploadedContent)
+                .prettyPeek()
+                .then()
+                .statusCode(200);
     }
 
 
