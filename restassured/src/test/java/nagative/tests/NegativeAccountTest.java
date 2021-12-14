@@ -1,13 +1,14 @@
+package nagative.tests;
+
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-
-import java.io.File;
+import base.BaseTest;
 
 import static io.restassured.RestAssured.given;
 import static org.hamcrest.Matchers.is;
 
 
-public class NegativeTest  {
+public class NegativeAccountTest extends BaseTest {
 
     @DisplayName("Проверка пользователя не корректного ")
     @Test
@@ -24,18 +25,14 @@ public class NegativeTest  {
     }
 
 
-    @DisplayName("Проверка загрузки картики без токена")
+    @DisplayName("Проверка авторизации пользователя")
     @Test
-    void getContentInfoBase64() {
+    void getAccountInfo() {
         given()
-                .multiPart("image", new File("src/test/resources/images.jpeg"))
-                .expect()
-                .body("success", is(false))
+                .headers("Authorization", clienID)
                 .when()
-                .post("https://api.imgur.com/3/image")
+                .get("https://api.imgur.com/3/account/")
                 .then()
-                .statusCode(401);
+                .statusCode(400);
     }
-
-
 }

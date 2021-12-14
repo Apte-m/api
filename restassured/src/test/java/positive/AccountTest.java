@@ -1,6 +1,8 @@
+package positive;
+
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import utils.BaseTest;
+import base.BaseTest;
 
 import static io.restassured.RestAssured.given;
 import static org.hamcrest.Matchers.equalTo;
@@ -20,7 +22,7 @@ public class AccountTest extends BaseTest {
     }
 
 
-    @DisplayName("Проверка авторизации пользователя с логированием")
+    @DisplayName("Проверка авторизации пользователя")
     @Test
     void getAccountInfoLog() {
         given()
@@ -38,6 +40,18 @@ public class AccountTest extends BaseTest {
     }
 
 
+    @DisplayName("Проверка кода авторизации пользователя  ")
+    @Test
+    void getAccountInfoCode() {
+        given()
+                .headers("Authorization", clienID)
+                .when()
+                .get("https://api.imgur.com/3/account/{username}", username)
+                .then()
+                .statusCode(200);
+
+
+    }
 
 
 }
