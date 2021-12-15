@@ -6,7 +6,7 @@ import org.junit.jupiter.api.BeforeEach;
 
 import java.io.File;
 
-public class VideoBaseTest extends BaseTest {
+public abstract class VideoBaseTest extends BaseTest {
     protected static RequestSpecification headerVideo;
 
     @BeforeEach

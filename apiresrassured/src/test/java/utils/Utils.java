@@ -3,12 +3,15 @@ package utils;
 import org.apache.commons.io.FileUtils;
 
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.InputStream;
+import java.util.Properties;
 
 
 public class Utils {
-
-
+    protected static Properties properties = new Properties();
+    // получить картинку
     public static byte[] getContent() {
         byte[] image = new byte[0];
         try {
@@ -19,6 +22,14 @@ public class Utils {
         return image;
 
     }
+// получить переменные
+    public static void getProperties() {
+        try (InputStream output = new FileInputStream("src/test/resources/application.properties")) {
+            properties.load(output);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
 
+    }
 }

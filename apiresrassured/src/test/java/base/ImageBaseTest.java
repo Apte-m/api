@@ -12,9 +12,8 @@ import java.util.Base64;
 
 import static enpoints.Endpoints.IMAGE;
 import static io.restassured.RestAssured.given;
-import static utils.Utils.getContent;
 
-public class ImageBaseTest extends BaseTest {
+public abstract class ImageBaseTest extends BaseTest {
     protected byte[] image;
     protected String encodedFile;
     protected RequestSpecification headerImageBase64;
