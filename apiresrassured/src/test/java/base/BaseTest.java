@@ -9,7 +9,6 @@ import io.restassured.specification.RequestSpecification;
 import io.restassured.specification.ResponseSpecification;
 import org.junit.jupiter.api.BeforeAll;
 
-import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
@@ -50,10 +49,6 @@ public abstract class BaseTest {
                 .expectStatusCode(200)
                 .build();
 
-        headerImage = new RequestSpecBuilder()
-                .addHeader("Authorization", clienID)
-                .addMultiPart("image", new File("src/test/resources/images.jpeg"))
-                .build();
 
 
 
