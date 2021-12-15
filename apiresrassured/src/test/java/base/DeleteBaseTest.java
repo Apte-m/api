@@ -7,11 +7,11 @@ import static enpoints.Endpoints.IMAGE;
 import static io.restassured.RestAssured.given;
 
 public class DeleteBaseTest extends BaseTest {
-    protected String uploadedContent;
+    protected String deleteHash;
 
     @BeforeEach
     void deleteUp() {
-        uploadedContent = given(headerImage)
+        deleteHash = given(headerImage)
                 .post(IMAGE)
                 .then()
                 .extract()

@@ -4,6 +4,7 @@ import base.ImageBaseTest;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import static enpoints.Endpoints.IMAGE_HASH;
 import static io.restassured.RestAssured.given;
 
 public class ImageInformationTest extends ImageBaseTest {
@@ -13,7 +14,7 @@ public class ImageInformationTest extends ImageBaseTest {
     @Test
     void uploadInfo() {
         given(header, checkResponse)
-                .post("image/{imageHash}", imageHash);
+                .post(IMAGE_HASH, imageHash);
 
     }
 

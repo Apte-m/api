@@ -4,6 +4,7 @@ import base.ImageBaseTest;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import static enpoints.Endpoints.FAVORITE;
 import static io.restassured.RestAssured.given;
 
 public class FavoriteTest extends ImageBaseTest {
@@ -14,6 +15,6 @@ public class FavoriteTest extends ImageBaseTest {
     @Test
     void addFavorite() {
         given(header, checkResponse)
-                .post("/image/{deleteHash}/favorite", imageHash);
+                .post(FAVORITE, imageHash);
     }
 }

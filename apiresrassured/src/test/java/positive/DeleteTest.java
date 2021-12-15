@@ -13,7 +13,7 @@ public class DeleteTest extends DeleteBaseTest {
     @Test
     void delete() {
         given(header, checkResponse)
-                .delete(DELETE, uploadedContent);
+                .delete(DELETE, deleteHash);
     }
 }
 
