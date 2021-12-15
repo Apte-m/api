@@ -1,29 +1,16 @@
 package positive;
 
-import org.apache.commons.io.FileUtils;
+import base.ImageBaseTest;
 import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import base.BaseTest;
 
 import java.io.File;
-import java.io.IOException;
-import java.util.Base64;
 
 import static io.restassured.RestAssured.given;
 import static org.hamcrest.Matchers.is;
 
-public class ImageTest extends BaseTest {
-    private static byte[] image;
-    private static String encodedFile;
-    private static   String uploadedContent;
-
-    @BeforeEach
-    void imageUp() {
-        image = getContent();
-        encodedFile = Base64.getEncoder().encodeToString(image);
-    }
+public class ImageTest extends ImageBaseTest {
 
     @DisplayName("Проверка загрузки картики Base64")
     @Test
@@ -75,16 +62,7 @@ public class ImageTest extends BaseTest {
     }
 
 
-    private static byte[] getContent() {
-        byte[] image = new byte[0];
-        try {
-            image = FileUtils.readFileToByteArray(new File("src/test/resources/images.jpeg"));
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        return image;
 
-    }
 
 
 }
