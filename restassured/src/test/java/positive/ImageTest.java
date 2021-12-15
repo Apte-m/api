@@ -15,7 +15,7 @@ public class ImageTest extends ImageBaseTest {
     @DisplayName("Проверка загрузки картики Base64")
     @Test
     void getContentInfoBase64Test() {
-        uploadedContent = given()
+         given()
                 .headers("Authorization", token)
                 .multiPart("image", encodedFile)
                 .expect()
@@ -24,15 +24,13 @@ public class ImageTest extends ImageBaseTest {
                 .when()
                 .post("https://api.imgur.com/3/image")
                 .then()
-                .extract()
-                .jsonPath()
-                .getString("data.deletehash");
+                .statusCode(200);
     }
 
     @DisplayName("Проверка загрузки картики из директории ресурс")
     @Test
     void getContentInfo() {
-        uploadedContent = given()
+      given()
                 .headers("Authorization", token)
                 .multiPart("image", new File("src/test/resources/images.jpeg"))
                 .expect()
@@ -43,9 +41,7 @@ public class ImageTest extends ImageBaseTest {
                 .when()
                 .post("https://api.imgur.com/3/image")
                 .then()
-                .extract()
-                .jsonPath()
-                .getString("data.deletehash");
+                .statusCode(200);
 
     }
 
@@ -55,7 +51,7 @@ public class ImageTest extends ImageBaseTest {
         given()
                 .headers("Authorization", token)
                 .when()
-                .delete("https://api.imgur.com/3/image/{deleteHash}", uploadedContent)
+                .delete("https://api.imgur.com/3/image/{deleteHash}", deleteHash)
                 .prettyPeek()
                 .then()
                 .statusCode(200);
