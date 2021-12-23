@@ -11,6 +11,7 @@
     <modules>
         <module>restassured</module>
         <module>apiresrassured</module>
+        <module>retrofit</module>
 
     </modules>
 
