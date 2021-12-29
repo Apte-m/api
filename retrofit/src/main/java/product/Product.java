@@ -6,8 +6,6 @@ import lombok.*;
 @NoArgsConstructor
 @AllArgsConstructor
 @With
-@ToString
-@Getter
 public class Product {
     private int price;
     private String categoryTitle;

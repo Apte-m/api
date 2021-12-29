@@ -33,6 +33,7 @@ public class VideoTest extends BaseTest {
 
     }
 
+
     @DisplayName("Проверка удаления картинки")
     @AfterEach
     void tearDown() {

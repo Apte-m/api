@@ -17,7 +17,8 @@ import static org.hamcrest.Matchers.is;
 public class ImageTest extends BaseTest {
     private static byte[] image;
     private static String encodedFile;
-    private static   String uploadedContent;
+    private static String uploadedContent;
+
 
     @BeforeEach
     void imageUp() {

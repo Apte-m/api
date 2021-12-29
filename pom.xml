@@ -12,6 +12,7 @@
         <module>restassured</module>
         <module>apiresrassured</module>
         <module>retrofit</module>
+        <module>mybatis</module>
 
     </modules>
 

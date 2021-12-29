@@ -23,9 +23,8 @@ public class ProductTest extends BaseTest {
                 .withPrice((int) (Math.random() + 1) * 100)
                 .withCategoryTitle(CategoryType.ELECTRONIC.getTitle());
 
-        Response<Product> response = productService
-                .createProduct(product)
-                .execute();
+        Response<Product> response = productService.createProduct(product).execute();
+
         id = response.body().getId();
 
 
@@ -48,6 +47,7 @@ public class ProductTest extends BaseTest {
         Response<Product> response = productService.getProduct(id).execute();
         softAssertions.assertThat(response.headers()).isEqualTo(200);
     }
+
 
     @DisplayName("создание продукта")
     @Test
@@ -75,7 +75,7 @@ public class ProductTest extends BaseTest {
     @SneakyThrows
     void chanceProduct() {
         Response<Product> response = productService
-                .chanceProduct(product.withId(id)
+                .updateProduct(product.withId(id)
                         .withTitle(faker.animal().name())).execute();
         softAssertions.assertThat(response.headers())
                 .isEqualTo(200);
