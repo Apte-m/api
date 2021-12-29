@@ -9,7 +9,6 @@ import static io.restassured.RestAssured.given;
 
 public class AccountTest extends BaseTest {
 
-
     @DisplayName("Проверка авторизации пользователя")
     @Test
     void getAccountInfoLog() {

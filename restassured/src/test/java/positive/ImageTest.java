@@ -19,6 +19,7 @@ public class ImageTest extends BaseTest {
     private static String encodedFile;
     private static String uploadedContent;
 
+
     @BeforeEach
     void imageUp() {
         image = getContent();
@@ -62,6 +63,7 @@ public class ImageTest extends BaseTest {
 
     }
 
+    @DisplayName("Проверка удаления картинки")
     @AfterEach
     void tearDown() {
         given()

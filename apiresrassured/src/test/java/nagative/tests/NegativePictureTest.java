@@ -10,6 +10,7 @@ import static io.restassured.RestAssured.given;
 import static org.hamcrest.Matchers.is;
 
 public class NegativePictureTest extends BaseTest {
+
     @DisplayName("Проверка загрузки картики без токена")
     @Test
     void getContentInfoBase64() {
