@@ -13,6 +13,7 @@
         <module>apiresrassured</module>
         <module>retrofit</module>
         <module>mybatis</module>
+        <module>les2</module>
 
     </modules>
 
