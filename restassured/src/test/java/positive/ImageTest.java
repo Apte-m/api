@@ -1,18 +1,16 @@
 package positive;
 
-import org.apache.commons.io.FileUtils;
+import base.ImageBaseTest;
 import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import base.BaseTest;
 
 import java.io.File;
-import java.io.IOException;
-import java.util.Base64;
 
 import static io.restassured.RestAssured.given;
 import static org.hamcrest.Matchers.is;
+
+public class ImageTest extends ImageBaseTest {
 
 public class ImageTest extends BaseTest {
     private static byte[] image;
@@ -26,10 +24,11 @@ public class ImageTest extends BaseTest {
         encodedFile = Base64.getEncoder().encodeToString(image);
     }
 
+
     @DisplayName("Проверка загрузки картики Base64")
     @Test
     void getContentInfoBase64Test() {
-        uploadedContent = given()
+         given()
                 .headers("Authorization", token)
                 .multiPart("image", encodedFile)
                 .expect()
@@ -38,15 +37,13 @@ public class ImageTest extends BaseTest {
                 .when()
                 .post("https://api.imgur.com/3/image")
                 .then()
-                .extract()
-                .jsonPath()
-                .getString("data.deletehash");
+                .statusCode(200);
     }
 
     @DisplayName("Проверка загрузки картики из директории ресурс")
     @Test
     void getContentInfo() {
-        uploadedContent = given()
+      given()
                 .headers("Authorization", token)
                 .multiPart("image", new File("src/test/resources/images.jpeg"))
                 .expect()
@@ -57,9 +54,7 @@ public class ImageTest extends BaseTest {
                 .when()
                 .post("https://api.imgur.com/3/image")
                 .then()
-                .extract()
-                .jsonPath()
-                .getString("data.deletehash");
+                .statusCode(200);
 
     }
 
@@ -69,23 +64,14 @@ public class ImageTest extends BaseTest {
         given()
                 .headers("Authorization", token)
                 .when()
-                .delete("https://api.imgur.com/3/image/{deleteHash}", uploadedContent)
+                .delete("https://api.imgur.com/3/image/{deleteHash}", deleteHash)
                 .prettyPeek()
                 .then()
                 .statusCode(200);
     }
 
 
-    private static byte[] getContent() {
-        byte[] image = new byte[0];
-        try {
-            image = FileUtils.readFileToByteArray(new File("src/test/resources/images.jpeg"));
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        return image;
 
-    }
 
 
 }
