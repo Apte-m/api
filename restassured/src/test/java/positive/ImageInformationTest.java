@@ -6,7 +6,12 @@ import org.junit.jupiter.api.Test;
 
 import static io.restassured.RestAssured.given;
 
+
 public class ImageInformationTest extends ImageBaseTest {
+
+public class ImageInformationTest extends BaseTest {
+
+   private String imageHash;
 
 
     @DisplayName("изменение заголовка")

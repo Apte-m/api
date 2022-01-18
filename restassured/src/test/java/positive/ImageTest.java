@@ -12,6 +12,19 @@ import static org.hamcrest.Matchers.is;
 
 public class ImageTest extends ImageBaseTest {
 
+public class ImageTest extends BaseTest {
+    private static byte[] image;
+    private static String encodedFile;
+    private static String uploadedContent;
+
+
+    @BeforeEach
+    void imageUp() {
+        image = getContent();
+        encodedFile = Base64.getEncoder().encodeToString(image);
+    }
+
+
     @DisplayName("Проверка загрузки картики Base64")
     @Test
     void getContentInfoBase64Test() {

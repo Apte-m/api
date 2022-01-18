@@ -9,6 +9,7 @@ import static io.restassured.RestAssured.given;
 public class VideoTest extends ImageBaseTest {
 
 
+
     @DisplayName("Проверка удаления картинки")
     @AfterEach
     void tearDown() {
