@@ -85,13 +85,4 @@ public class TriangleTest {
     }
 
 
-    @Test
-    @DisplayName("(негатив) Проверка корректность ввода цифры")
-    void checkNumber() {
-        assertThrows(NumberFormatException.class, () -> Triangle.areaTriangle(4, Integer.parseInt("d"), 5));
-        assertThrows(NumberFormatException.class, () -> Triangle.areaTriangle(Integer.parseInt("d"), 4, 5));
-        assertThrows(NumberFormatException.class, () -> Triangle.areaTriangle(4, 5, Integer.parseInt("d")));
-        logger.info("Logging message: {}", "(негатив) Проверка корректность ввода цифры");
-    }
-
 }
