@@ -21,7 +21,6 @@ public class BookPaige extends BasePaige {
 
     public BookPaige goToNewsAndClickLikeFirstLabel() {
         waitVisibilityOf(news).click();
-        like.click();
         return this;
 
     }

@@ -30,13 +30,16 @@ public class DiaryTest extends Utils {
     void checkLike() {
 
         BookPaige bookPaige = new BookPaige();
-        bookPaige.goToNewsAndClickLikeFirstLabel().getCountLike();
-        BookNote bookNoteActual = new BookNote(bookPaige.getCountLike(), bookPaige.getUserName());
-        BookNote bookNoteExpect = new BookNote("17", "Diary Spirit");
+        bookPaige
+                .goToNewsAndClickLikeFirstLabel()
+                .simpleReturnClick();
 
-        assertTrue(EqualsBuilder.reflectionEquals(bookNoteActual, bookNoteExpect));
 
-        bookPaige.simpleReturnClick(); // Здесь я возвращаю обратно клик подскажите правильно делать это в методе или
+        assertTrue(EqualsBuilder.reflectionEquals(new BookNote(bookPaige.getCountLike(), bookPaige.getUserName()),
+                new BookNote("17", "Diary Spirit")));
+
+        bookPaige
+                .simpleReturnClick(); // Здесь я возвращаю обратно клик подскажите правильно делать это в методе или
         // лучше вынести ???
 
 
