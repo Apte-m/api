@@ -1,11 +1,11 @@
 package settings;
 
+import facktory.Browsers;
+import facktory.DriverFactory;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.chrome.ChromeOptions;
 
 public class Utils {
 
@@ -20,9 +20,7 @@ public class Utils {
     @BeforeAll
     public static void setUp() {
         WebDriverManager.chromedriver().setup();
-        ChromeOptions options = new ChromeOptions();
-        options.addArguments("--disable-blink-features=AutomationControlled");
-        driver = new ChromeDriver(options);
+        driver = DriverFactory.getWebDriver(Browsers.CHROME);
         driver.manage().window().maximize();
 
 
@@ -31,8 +29,7 @@ public class Utils {
 
     @AfterAll
     public static void rearDown() {
-
-      //  driver.quit();
+        driver.quit();
 
 
     }

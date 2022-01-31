@@ -2,7 +2,7 @@ package base;
 
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import readProperty.ReadConfig;
+import readproperty.ReadConfig;
 
 public class DiaryPaige extends BasePaige {
     @FindBy(xpath = "//a[contains(@href,'login')]")

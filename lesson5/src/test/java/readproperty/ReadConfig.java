@@ -1,4 +1,4 @@
-package readProperty;
+package readproperty;
 
 import com.typesafe.config.Config;
 import com.typesafe.config.ConfigFactory;

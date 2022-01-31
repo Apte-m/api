@@ -1,18 +1,16 @@
 package test;
 
-import base.BookNote;
 import base.BookPaige;
 import base.DiaryPaige;
-import org.apache.commons.lang.builder.EqualsBuilder;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import readProperty.ReadConfig;
+import readproperty.ReadConfig;
 import settings.Utils;
-
-import static org.junit.jupiter.api.Assertions.assertTrue;
-
+import static org.junit.jupiter.api.Assertions.*;
 
 public class DiaryTest extends Utils {
+
 
     @DisplayName("Проверка сооствестивие логина")
     @Test
@@ -28,21 +26,23 @@ public class DiaryTest extends Utils {
     @DisplayName("Проверка добавления лайка пользователю Diary Spirit")
     @Test
     void checkLike() {
+        new BookPaige()
+                .goTo()
+                .goToNewsAndClickLikeFirstLabel()
+                .simpleReturnClick()
+                .assertCountLikeAndUserName();
+    }
 
+
+    @AfterEach
+    void tearDown() {
         BookPaige bookPaige = new BookPaige();
         bookPaige
-                .goToNewsAndClickLikeFirstLabel()
-                .simpleReturnClick();
-
-
-        assertTrue(EqualsBuilder.reflectionEquals(new BookNote(bookPaige.getCountLike(), bookPaige.getUserName()),
-                new BookNote("17", "Diary Spirit")));
-
-        bookPaige
-                .simpleReturnClick(); // Здесь я возвращаю обратно клик подскажите правильно делать это в методе или
-        // лучше вынести ???
-
-
+                .goTo()
+                .goToNewsAndClickLikeFirstLabel();
+        if (!bookPaige.getDisplayed()) {
+            bookPaige.simpleReturnClick();
+        }
     }
 
 
