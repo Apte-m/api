@@ -23,14 +23,15 @@ public class BookPaige extends BasePaige {
         super();
     }
 
-    public BookPaige goTo (){
+    public BookPaige goTo() {
         webDriver.navigate().to(ReadConfig.URL);
         webDriver.manage().addCookie(new Cookie("_identity_", ReadConfig.COOKIE));
         webDriver.navigate().refresh();
         return this;
     }
+
     public BookPaige goToNewsAndClickLikeFirstLabel() {
-        waitVisibilityOf(news).click();
+        news.click();
         return this;
 
     }
@@ -50,12 +51,11 @@ public class BookPaige extends BasePaige {
 
     public boolean getDisplayed() {
 
-       try {
-           return waitVisibilityOf(likeDisplayed).isDisplayed();
-       }catch (NotFoundException e) {
-           return false;
-       }
-
+        try {
+            return waitVisibilityOf(likeDisplayed).isDisplayed();
+        } catch (NotFoundException e) {
+            return false;
+        }
 
 
     }
