@@ -40,7 +40,7 @@ public class DiaryTest extends Utils {
         bookPaige
                 .goTo()
                 .goToNewsAndClickLikeFirstLabel();
-        if (!bookPaige.getDisplayed()) {
+        if (bookPaige.getDisplayed()) {
             bookPaige.simpleReturnClick();
         }
     }

@@ -5,7 +5,7 @@ import base.BookPaige;
 import static org.junit.jupiter.api.Assertions.assertAll;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class AssertionStep {
+public class BookAssertionStep {
 
     public BookPaige assertCountLikeAndUserName() {
         BookPaige bookPaige = new BookPaige();

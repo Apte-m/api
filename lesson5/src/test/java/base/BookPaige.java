@@ -1,11 +1,11 @@
 package base;
 
 import org.openqa.selenium.Cookie;
-import org.openqa.selenium.NoSuchElementException;
+import org.openqa.selenium.NotFoundException;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import readproperty.ReadConfig;
-import step.AssertionStep;
+import step.BookAssertionStep;
 
 public class BookPaige extends BasePaige {
     @FindBy(xpath = "//*[contains(text(),'Новости дневников')]")
@@ -35,9 +35,9 @@ public class BookPaige extends BasePaige {
 
     }
 
-    public AssertionStep simpleReturnClick() {
+    public BookAssertionStep simpleReturnClick() {
         like.click();
-        return new AssertionStep();
+        return new BookAssertionStep();
     }
 
     public String getCountLike() {
@@ -49,11 +49,13 @@ public class BookPaige extends BasePaige {
     }
 
     public boolean getDisplayed() {
-        try {
-            return waitVisibilityOf(likeDisplayed).getAttribute("style").equals("font-weight:600; cursor:pointer");
-        } catch (NoSuchElementException e) {
-            return false;
-        }
+
+       try {
+           return waitVisibilityOf(likeDisplayed).isDisplayed();
+       }catch (NotFoundException e) {
+           return false;
+       }
+
 
 
     }

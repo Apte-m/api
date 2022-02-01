@@ -21,14 +21,6 @@ public abstract class BasePaige {
 
     }
 
-    public BasePaige(String url, String cookie) {
-        this.webDriver = getDriver();
-        PageFactory.initElements(webDriver, this);
-        webDriverWait = new WebDriverWait(webDriver, 10);
-        webDriver.navigate().to(url);
-        webDriver.manage().addCookie(new Cookie("_identity_", cookie));
-        webDriver.navigate().refresh();
-    }
 
     @Description("Ожидание елемента")
     public WebElement waitVisibilityOf(WebElement element) {
