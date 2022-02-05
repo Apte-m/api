@@ -6,7 +6,6 @@ import org.openqa.selenium.support.FindBy;
 import readproperty.ReadConfig;
 
 public class LoginInPaige extends BasePaige {
-
     @FindBy(xpath = "//li[.='PandaAutoTest']")
     private WebElement locatedLogin;
 

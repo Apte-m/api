@@ -15,8 +15,8 @@ public class DriverFactory {
             case CHROME:
                 ChromeOptions options = new ChromeOptions();
                 options.addArguments("--disable-blink-features=AutomationControlled");
-                WebDriverManager.chromedriver().setup();
                 webDriver = new ChromeDriver(options);
+                WebDriverManager.chromedriver().setup();
                 break;
             case FIREFOX:
                 FirefoxOptions optionsFire = new FirefoxOptions();

@@ -11,6 +11,7 @@ public interface ReadConfig {
     }
 
     String URL = readProperties().getString("url");
+    String URL_LIKE = readProperties().getString("urlLike");
     String LOGIN = readProperties().getString("usersParams.admin.login");
     String PASSWORD = readProperties().getString("usersParams.admin.password");
     String COOKIE = readProperties().getString("usersParams.admin.configuration.cookie");

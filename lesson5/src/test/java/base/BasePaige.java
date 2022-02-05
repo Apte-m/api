@@ -1,23 +1,26 @@
 package base;
 
 import jdk.jfr.Description;
-import org.openqa.selenium.*;
+import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-import static settings.Utils.getDriver;
+import static settings.UtilsTest.getDriver;
 
 public abstract class BasePaige {
-    protected WebDriver webDriver;
+    protected WebDriver driver;
     protected WebDriverWait webDriverWait;
     protected JavascriptExecutor executor;
 
     public BasePaige() {
-        this.webDriver = getDriver();
-        PageFactory.initElements(webDriver, this);
-        executor = (JavascriptExecutor) webDriver;
-        webDriverWait = new WebDriverWait(webDriver, 10);
+        this.driver = getDriver();
+        PageFactory.initElements(driver, this);
+        executor = (JavascriptExecutor) driver;
+        webDriverWait = new WebDriverWait(driver, 20);
 
     }
 
@@ -27,9 +30,18 @@ public abstract class BasePaige {
         return webDriverWait.until(ExpectedConditions.visibilityOf(element));
     }
 
+    @Description("Ожидание елемента")
+    public Boolean waitVisibilityOr(WebElement elementOne, WebElement elementTwo) {
+        return webDriverWait.until(ExpectedConditions.or(
+                ExpectedConditions.visibilityOf(elementOne),
+                ExpectedConditions.visibilityOf(elementTwo)
+        ));
+
+    }
+
     @Description("Переключение на другой frame")
     public void switchToIframe(String cssSelector) {
-        webDriver.switchTo().frame(webDriver.findElement(By.cssSelector(cssSelector)));
+        driver.switchTo().frame(driver.findElement(By.cssSelector(cssSelector)));
     }
 
     public void clickJavaScript(WebElement locator) {
@@ -38,9 +50,9 @@ public abstract class BasePaige {
 
     @Description("Переключение на другой tab")
     public void switchToAnotherTab() {
-        webDriver.switchTo().window(
-                webDriver.getWindowHandles().stream()
-                        .filter(h -> !h.equals(webDriver.getWindowHandle()))
+        driver.switchTo().window(
+                driver.getWindowHandles().stream()
+                        .filter(h -> !h.equals(driver.getWindowHandle()))
                         .findFirst().get()
         );
     }

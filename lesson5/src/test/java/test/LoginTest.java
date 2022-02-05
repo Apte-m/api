@@ -4,11 +4,11 @@ import base.DiaryPaige;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import readproperty.ReadConfig;
-import settings.Utils;
+import settings.UtilsTest;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
-
-public class DiaryTest extends Utils {
+@DisplayName("Проверка входа")
+public class LoginTest extends UtilsTest {
 
 
     @DisplayName("Проверка сооствестивие логина")

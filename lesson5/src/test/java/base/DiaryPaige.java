@@ -1,5 +1,6 @@
 package base;
 
+import io.qameta.allure.Step;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import readproperty.ReadConfig;
@@ -23,17 +24,17 @@ public class DiaryPaige extends BasePaige {
 
 
     public DiaryPaige goTo() {
-        webDriver.navigate().to(ReadConfig.URL);
+        driver.navigate().to(ReadConfig.URL);
         return this;
     }
-
+   @Step ("Вход пользователя логин {0}, пароль {1}")
     public LoginInPaige inputLoginAndPassword(String login, String password) {
         input.click();
         waitVisibilityOf(inputText).sendKeys(login);
         inputPassword.sendKeys(password);
         switchToIframe("iframe[title='reCAPTCHA']");
         clickJavaScript(captcha);
-        webDriver.switchTo().parentFrame();
+        driver.switchTo().parentFrame();
         comeIn.click();
         return new LoginInPaige();
     }
