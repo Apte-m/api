@@ -19,7 +19,6 @@ public class LoginTest extends UtilsTest {
                         .goTo()
                         .inputLoginAndPassword(ReadConfig.LOGIN, ReadConfig.PASSWORD)
                         .isLoginChecked());
-
     }
 
 

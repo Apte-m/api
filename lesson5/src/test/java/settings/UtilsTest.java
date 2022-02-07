@@ -11,7 +11,6 @@ import org.openqa.selenium.support.events.EventFiringWebDriver;
 
 @ExtendWith(ScreenshotExtension.class)
 public class UtilsTest {
-
     private static EventFiringWebDriver eventFiringWebDriver;
 
     public static WebDriver getDriver() {
@@ -25,15 +24,11 @@ public class UtilsTest {
         eventFiringWebDriver = new EventFiringWebDriver(DriverFactory.getWebDriver(Browsers.CHROME));
         eventFiringWebDriver.register(new CustomLogger());
         eventFiringWebDriver.manage().window().maximize();
-
-
     }
 
 
     @AfterAll
     public static void tearDown() {
         eventFiringWebDriver.quit();
-
-
     }
 }
