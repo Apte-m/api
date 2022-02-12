@@ -3,10 +3,9 @@ package base;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import readProperty.ReadConfig;
+import readproperty.ReadConfig;
 
 public class LoginInPaige extends BasePaige {
-
     @FindBy(xpath = "//li[.='PandaAutoTest']")
     private WebElement locatedLogin;
 
