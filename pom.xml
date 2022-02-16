@@ -13,8 +13,11 @@
         <module>apiresrassured</module>
         <module>retrofit</module>
         <module>mybatis</module>
-        <module>les2</module>
+
         <module>selenium_gb</module>
+        <module>triangle_test</module>
+        <module>lesson5</module>
+        <module>selenide</module>
 
     </modules>
 
